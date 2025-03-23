@@ -1,22 +1,58 @@
+import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link } from "@inertiajs/react";
+import { ReactNode } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+    children: ReactNode;
+}
+
+export default function Navbar({ children }: NavbarProps) {
     return (
-        <nav className="bg-blue-500 text-white p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <div className="text-lg font-bold">
-                    Logo
+        <>
+            <nav className="bg-gray-100">
+                <div className="bg-white border-b border-gray-100 shadow-sm">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between h-16 items-center">
+                            <div className="flex">
+                                <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                            </div>
+                            <div className="flex space-x-4">
+                                <Link
+                                    href={route('login')}
+                                    className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                >
+                                    Alumni
+                                </Link>
+                                <Link
+                                    href={route('login')}
+                                    className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                >
+                                    Lowongan Kerja
+                                </Link>
+                                <Link
+                                    href={route('login')}
+                                    className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                >
+                                    Inkubasi
+                                </Link>
+                                <Link
+                                    href={route('login')}
+                                    className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                >
+                                    Pra Inkubasi
+                                </Link>
+                                <Link
+                                    href={route('login')}
+                                    className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                >
+                                    Log in
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div></div>
-                <div className="flex space-x-4">
-                    <Link
-                        href={route('login')}
-                        className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Log in
-                    </Link>
-                </div>
-            </div>
-        </nav>
+            </nav>
+            <main>{children}</main>
+        </>
     );
 }
