@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nim')->unique();
             $table->integer('semester');
-            $table->integer('ipk');
+            $table->decimal('ipk', 3, 2);
             $table->timestamps();
         });
     }
