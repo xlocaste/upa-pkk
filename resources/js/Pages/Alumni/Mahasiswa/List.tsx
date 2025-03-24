@@ -35,7 +35,7 @@ export default function List({ Mahasiswa, auth }: Props) {
         <div className="py-12 bg-gray-100 min-h-screen">
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                    <h1 className="text-2xl font-bold mb-4">Daftar Mahasiswa</h1>
+                    <h1 className="text-2xl font-bold mb-4 text-gray-800">Daftar Mahasiswa</h1>
                     <table className="w-full border-collapse border border-gray-300">
                         <thead>
                             <tr className="bg-gray-200">
