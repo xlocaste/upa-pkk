@@ -21,7 +21,7 @@ export default function Navbar({ children }: NavbarProps) {
                                     href={route('mahasiswa.index')}
                                     className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                                 >
-                                    Mahasiswa Tambah
+                                    Mahasiswa
                                 </Link>
                                 <Link
                                     href={route('login')}
