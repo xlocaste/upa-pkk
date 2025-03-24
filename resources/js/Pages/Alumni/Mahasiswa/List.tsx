@@ -10,10 +10,21 @@ interface Mahasiswa {
 }
 
 interface Props {
+    Mahasiswa: Mahasiswa[];
+    auth: {
+        user: {
+            id: number;
+            name: string;
+            email: string;
+        } | null;
+    };
+}
+
+interface Props {
   Mahasiswa: Mahasiswa[];
 }
 
-export default function List({ Mahasiswa }: Props) {
+export default function List({ Mahasiswa, auth }: Props) {
   const { url } = usePage();
 
   return (
@@ -46,14 +57,16 @@ export default function List({ Mahasiswa }: Props) {
                         </tbody>
                     </table>
 
+                    {auth.user && (
                     <div className="mt-6">
-                            <Link
-                                href={route('mahasiswa.create')}
-                                className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                            >
-                                Tambah Mahasiswa
-                            </Link>
+                        <Link
+                        href={route('mahasiswa.create')}
+                        className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    >
+                        Tambah Mahasiswa
+                        </Link>
                     </div>
+                    )}
                 </div>
             </div>
         </div>

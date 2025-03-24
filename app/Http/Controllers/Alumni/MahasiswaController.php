@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Http\Requests\Alumni\Mahasiswa\StoreRequest;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class MahasiswaController extends Controller
@@ -15,7 +16,10 @@ class MahasiswaController extends Controller
         $daftarMahasiswa = Mahasiswa::all();
 
         return inertia::render('Alumni/Mahasiswa/List', [
-            'Mahasiswa' => $daftarMahasiswa
+            'Mahasiswa' => $daftarMahasiswa,
+            'auth' => [
+                'user' => Auth::user(),
+            ],
         ]);
     }
 
