@@ -30,6 +30,7 @@ Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
         Route::post('/', [MahasiswaController::class, 'store'])->name('store');
     });
     Route::get('/', [MahasiswaController::class, 'index'])->name('index');
+    Route::get('/', [MahasiswaController::class, 'create'])->name('create');
 });
 
 require __DIR__.'/auth.php';

@@ -18,10 +18,10 @@ export default function Navbar({ children }: NavbarProps) {
                             </div>
                             <div className="flex space-x-4">
                                 <Link
-                                    href={route('login')}
+                                    href={route('mahasiswa.store')}
                                     className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                                 >
-                                    Alumni
+                                    Mahasiswa Tambah
                                 </Link>
                                 <Link
                                     href={route('login')}
