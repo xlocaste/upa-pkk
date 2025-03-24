@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'nama'=>['required'],
-            'nim'=>['required'],
+            'nim'=>['required', 'unique:mahasiswa,nim'],
             'semester'=>['required'],
             'ipk'=>['required'],
         ];
