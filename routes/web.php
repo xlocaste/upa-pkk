@@ -28,9 +28,12 @@ Route::middleware('auth')->group(function () {
 Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::post('/', [MahasiswaController::class, 'store'])->name('store');
+        Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('updated');
+        Route::get('/{mahasiswa}', [MahasiswaController::class, 'show'])->name('show');
+        Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
+        Route::get('/{mahasiswa}/edit', [MahasiswaController::class, 'edit'])->name('edit');
     });
     Route::get('/', [MahasiswaController::class, 'index'])->name('index');
-    Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
 });
 
 require __DIR__.'/auth.php';

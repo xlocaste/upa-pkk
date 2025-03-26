@@ -43,15 +43,28 @@ export default function List({ Mahasiswa, auth }: Props) {
                             <th className="border border-gray-300 p-2">NIM</th>
                             <th className="border border-gray-300 p-2">Semester</th>
                             <th className="border border-gray-300 p-2">IPK</th>
+                            {auth.user && (
+                            <th className="border border-gray-300 p-2">Action</th>
+                            )}
                             </tr>
                         </thead>
                         <tbody>
-                            {Mahasiswa.map((item) => (
-                            <tr key={item.id} className="hover:bg-gray-100">
-                                <td className="border border-gray-300 p-2">{item.nama}</td>
-                                <td className="border border-gray-300 p-2">{item.nim}</td>
-                                <td className="border border-gray-300 p-2">{item.semester}</td>
-                                <td className="border border-gray-300 p-2">{item.ipk}</td>
+                            {Mahasiswa.map((mahasiswa) => (
+                            <tr key={mahasiswa.id} className="hover:bg-gray-100">
+                                <td className="border border-gray-300 p-2">{mahasiswa.nama}</td>
+                                <td className="border border-gray-300 p-2">{mahasiswa.nim}</td>
+                                <td className="border border-gray-300 p-2">{mahasiswa.semester}</td>
+                                <td className="border border-gray-300 p-2">{mahasiswa.ipk}</td>
+                                {auth.user && (
+                                <td className="border border-gray-300 p-2">
+                                     <Link
+                                        href={route('mahasiswa.edit', mahasiswa.id)}
+                                        className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                    >
+                                        Edit Mahasiswa
+                                    </Link>
+                                </td>
+                                )}
                             </tr>
                             ))}
                         </tbody>
@@ -60,10 +73,10 @@ export default function List({ Mahasiswa, auth }: Props) {
                     {auth.user && (
                     <div className="mt-6">
                         <Link
-                        href={route('mahasiswa.create')}
-                        className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                    >
-                        Tambah Mahasiswa
+                            href={route('mahasiswa.create')}
+                            className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                        >
+                            Tambah Mahasiswa
                         </Link>
                     </div>
                     )}

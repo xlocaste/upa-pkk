@@ -24,6 +24,13 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    public function show($mahasiswa)
+    {
+        $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
+
+        return response()->json($mahasiswa);
+    }
+
     public function store(StoreRequest $request)
     {
         $mahasiswa = Mahasiswa::create([
@@ -51,5 +58,12 @@ class MahasiswaController extends Controller
     public function create()
     {
         return Inertia::render('Alumni/Mahasiswa/Add');
+    }
+
+    public function edit(Mahasiswa $mahasiswa)
+    {
+        return Inertia::render('Alumni/Mahasiswa/Update', [
+            'mahasiswa' => $mahasiswa
+        ]);
     }
 }
