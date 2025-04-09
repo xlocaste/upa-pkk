@@ -27,11 +27,12 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
-        Route::post('/', [MahasiswaController::class, 'store'])->name('store');
-        Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('updated');
-        Route::get('/{mahasiswa}', [MahasiswaController::class, 'show'])->name('show');
         Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
+        Route::post('/', [MahasiswaController::class, 'store'])->name('store');
+        Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('update');
+        Route::delete('/{mahasiswa}', [MahasiswaController::class, 'destroy'])->name('destroy');
         Route::get('/{mahasiswa}/edit', [MahasiswaController::class, 'edit'])->name('edit');
+        Route::get('/{mahasiswa}', [MahasiswaController::class, 'show'])->name('show');
     });
     Route::get('/', [MahasiswaController::class, 'index'])->name('index');
 });

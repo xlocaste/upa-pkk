@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Http\Requests\Alumni\Mahasiswa\StoreRequest;
 use App\Http\Requests\Alumni\Mahasiswa\UpdateRequest;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -52,7 +53,7 @@ class MahasiswaController extends Controller
             'ipk'=>$request->ipk,
         ]);
 
-        return redirect()->route('mahasiswa.index');
+        return Inertia::location(route('mahasiswa.index'));
     }
 
     public function create()
@@ -65,5 +66,12 @@ class MahasiswaController extends Controller
         return Inertia::render('Alumni/Mahasiswa/Update', [
             'mahasiswa' => $mahasiswa
         ]);
+    }
+
+    public function destroy(Mahasiswa $mahasiswa)
+    {
+        $mahasiswa->delete();
+
+        return Redirect::route('mahasiswa.index')->with('message', 'Data berhasil dihapus');
     }
 }

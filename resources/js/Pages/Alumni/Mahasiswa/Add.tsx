@@ -1,7 +1,7 @@
 import Navbar from '@/Components/Navbar';
 import { useForm } from '@inertiajs/react';
 
-export default function Form() {
+export default function Add() {
   const { data, setData, post, processing } = useForm({
     nama: '',
     nim: '',

@@ -1,5 +1,5 @@
 import Navbar from '@/Components/Navbar';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, router, useForm } from '@inertiajs/react';
 
 interface Mahasiswa {
   id: number;
@@ -19,7 +19,9 @@ export default function Edit({ mahasiswa }: { mahasiswa: Mahasiswa }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    put(route('mahasiswa.update', mahasiswa.id));
+    put(route('mahasiswa.update', mahasiswa.id), {
+        onSuccess: () => router.visit(route('mahasiswa.index')),
+      });
   };
 
   return (

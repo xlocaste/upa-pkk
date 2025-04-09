@@ -23,9 +23,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'nama'=>['required'],
-            'nim'=>['required', 'unique:mahasiswa,nim'],
-            'semester'=>['required'],
-            'ipk'=>['required'],
+            'nim'=>['required', 'unique:mahasiswa,nim,' . $this->mahasiswa->id],
+            'semester'=>['required', 'integer', 'min:0'],
+            'ipk'=>['required', 'min:0', 'max:4', 'numeric'],
         ];
     }
 }

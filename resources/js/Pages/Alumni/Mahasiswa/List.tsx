@@ -1,5 +1,5 @@
 import Navbar from '@/Components/Navbar';
-import { Head, usePage, Link } from '@inertiajs/react';
+import { Head, usePage, Link, router } from '@inertiajs/react';
 
 interface Mahasiswa {
   id: number;
@@ -23,6 +23,17 @@ interface Props {
 interface Props {
   Mahasiswa: Mahasiswa[];
 }
+
+const handleDelete = (id: number) => {
+    if (confirm('Yakin ingin menghapus data ini?')) {
+      router.delete(route('mahasiswa.destroy', id), {
+        preserveScroll: true,
+        onSuccess: () => {
+          console.log('Data berhasil dihapus');
+        },
+      });
+    }
+  };
 
 export default function List({ Mahasiswa, auth }: Props) {
   const { url } = usePage();
@@ -63,6 +74,12 @@ export default function List({ Mahasiswa, auth }: Props) {
                                     >
                                         Edit Mahasiswa
                                     </Link>
+                                    <button
+                                    onClick={() => handleDelete(mahasiswa.id)}
+                                    className="px-4 py-2 text-sm text-red-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                                    >
+                                    Hapus Mahasiswa
+                                    </button>
                                 </td>
                                 )}
                             </tr>
