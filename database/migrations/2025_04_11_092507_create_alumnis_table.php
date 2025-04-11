@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('judul_magang');
             $table->string('judul_tugas_akhir');
             $table->year('tahun_lulus');
+            $table->unsignedBigInteger('mahasiswa_id');
             $table->timestamps();
 
-            $table->foreignId('mahasiswa_id')->constrained('mahasiswa')->onDelete('cascade');
+            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
         });
     }
 

@@ -94,7 +94,7 @@ export default function List({ daftarAlumni, auth }: Props) {
               {auth.user && (
                 <div className="mt-6">
                   <Link
-                    href={route('alumni.index')}
+                    href={route('alumni.create')}
                     className="px-4 py-2 text-sm text-gray-700 hover:underline"
                   >
                     Tambah Alumni

@@ -40,6 +40,8 @@ Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
 
 Route::prefix('/alumni')->name('alumni.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [AlumniController::class, 'create'])->name('create');
+        Route::post('/', [AlumniController::class, 'store'])->name('store');
     });
     Route::get('/', [AlumniController::class, 'index'])->name('index');
 });
