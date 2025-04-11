@@ -17,4 +17,9 @@ class Mahasiswa extends Model
         'semester',
         'ipk',
     ];
+
+    public function alumni()
+    {
+        return $this->hasOne(Alumni::class);
+    }
 }
