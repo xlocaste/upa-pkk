@@ -12,12 +12,11 @@ interface PageProps {
 }
 
 export default function Add({ mahasiswa }: PageProps) {
-  const { data, setData, post, processing } = useForm({
+  const { data, setData, post, errors, processing } = useForm({
     mahasiswa_id: '',
     tempat_magang: '',
     judul_magang: '',
     judul_tugas_akhir: '',
-    tugas_akhir: '',
     tahun_lulus: '',
   });
 
@@ -33,6 +32,9 @@ export default function Add({ mahasiswa }: PageProps) {
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
               <h1 className="text-2xl font-bold mb-4">Tambah Alumni</h1>
+              {errors.mahasiswa_id && (
+                <p className="text-red-500 text-sm">{errors.mahasiswa_id}</p>
+              )}
               <form onSubmit={handleSubmit} className="space-y-3">
                 <label className="block font-medium">Pilih Mahasiswa (berdasarkan NIM)</label>
                 <select
@@ -82,14 +84,6 @@ export default function Add({ mahasiswa }: PageProps) {
                     required
                     min="1900"
                     max={new Date().getFullYear()}
-                />
-                <textarea
-                  placeholder="Deskripsi Tugas Akhir"
-                  value={data.tugas_akhir}
-                  onChange={(e) => setData('tugas_akhir', e.target.value)}
-                  className="w-full border rounded p-2"
-                  rows={4}
-                  required
                 />
                 <button
                   type="submit"

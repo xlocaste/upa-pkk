@@ -22,11 +22,18 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mahasiswa_id' => ['required'],
+            'mahasiswa_id' => ['required', 'exists:mahasiswa,id', 'unique:alumni,mahasiswa_id'],
             'tempat_magang' => ['required'],
             'judul_magang' => ['required'],
             'judul_tugas_akhir' => ['required'],
             'tahun_lulus' => ['required'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'mahasiswa_id.unique' => 'Mahasiswa ini sudah terdaftar sebagai alumni.',
         ];
     }
 }

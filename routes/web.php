@@ -42,6 +42,9 @@ Route::prefix('/alumni')->name('alumni.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [AlumniController::class, 'create'])->name('create');
         Route::post('/', [AlumniController::class, 'store'])->name('store');
+        Route::put('/{alumni}', [AlumniController::class, 'update'])->name('update');
+        Route::delete('/{alumni}', [AlumniController::class, 'destroy'])->name('destroy');
+        Route::get('/{alumni}/edit', [AlumniController::class, 'edit'])->name('edit');
     });
     Route::get('/', [AlumniController::class, 'index'])->name('index');
 });

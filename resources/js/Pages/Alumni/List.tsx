@@ -7,6 +7,7 @@ interface Mahasiswa {
 }
 
 interface Alumni {
+  id: number
   id_alumni: number
   tempat_magang: string
   judul_magang: string
@@ -27,16 +28,10 @@ interface Props {
 }
 
 const handleDelete = (id: number) => {
-  if (confirm('Yakin ingin menghapus data alumni ini?')) {
-    router.delete(route('alumni.index', id), {
-      preserveScroll: true,
-      onSuccess: () => {
-        console.log('Data alumni berhasil dihapus')
-      },
-    })
-  }
-}
-
+    if (confirm('Yakin ingin menghapus data ini?')) {
+      router.delete(route('alumni.destroy', id));
+    }
+  };
 export default function List({ daftarAlumni, auth }: Props) {
   const { url } = usePage()
 
@@ -73,13 +68,13 @@ export default function List({ daftarAlumni, auth }: Props) {
                       {auth.user && (
                         <td className="border border-gray-300 p-2 space-x-2">
                           <Link
-                            href={route('alumni.index', alumni.id_alumni)}
+                            href={route('alumni.edit', alumni.id)}
                             className="px-4 py-2 text-sm text-gray-700 hover:underline"
                           >
                             Edit Alumni
                           </Link>
                           <button
-                            onClick={() => handleDelete(alumni.id_alumni)}
+                            onClick={() => handleDelete(alumni.id)}
                             className="px-4 py-2 text-sm text-red-600 hover:underline"
                           >
                             Hapus Alumni
