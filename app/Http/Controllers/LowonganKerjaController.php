@@ -27,10 +27,10 @@ class LowonganKerjaController extends Controller
     public function store(StoreRequest $request)
     {
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('items', 'public');
+            $image = $request->file('image')->store('LowongaKerja', 'public');
         }
 
-        $lowonganKerja = LowongaKerja::Create([
+        $lowonganKerja = LowonganKerja::Create([
             'image'=>$image,
             'judul_lowongan_kerja'=>$request->judul_lowongan_kerja,
             'deskripsi'=>$request->deskripsi,
@@ -38,5 +38,10 @@ class LowonganKerjaController extends Controller
         ]);
 
         return redirect()->route('lowongan-kerja.index');
+    }
+
+    public function create()
+    {
+        return Inertia::render('LowonganKerja/Add');
     }
 }

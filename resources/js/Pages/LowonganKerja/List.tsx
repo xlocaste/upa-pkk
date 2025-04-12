@@ -10,7 +10,7 @@ interface LowonganKerja {
 }
 
 interface Props {
-  lowongan: LowonganKerja[];
+  lowonganKerja: LowonganKerja[];
   auth: {
     user: {
       id: number;
@@ -31,7 +31,7 @@ const handleDelete = (id: number) => {
   }
 };
 
-export default function LowonganKerjaList({ lowongan, auth }: Props) {
+export default function List({ lowonganKerja, auth }: Props) {
   const { url } = usePage();
 
   return (
@@ -55,7 +55,7 @@ export default function LowonganKerjaList({ lowongan, auth }: Props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {lowongan?.map((item) => (
+                  {lowonganKerja?.map((item) => (
                     <tr key={item.id} className="hover:bg-gray-100">
                       <td className="border border-gray-300 p-2">{item.judul_lowongan_kerja}</td>
                       <td className="border border-gray-300 p-2">{item.deskripsi}</td>
@@ -91,7 +91,7 @@ export default function LowonganKerjaList({ lowongan, auth }: Props) {
               {auth.user && (
                 <div className="mt-6">
                   <Link
-                    href={route('lowongan-kerja.index')}
+                    href={route('lowongan-kerja.create')}
                     className="px-4 py-2 text-sm text-gray-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                   >
                     Tambah Lowongan

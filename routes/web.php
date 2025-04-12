@@ -52,6 +52,8 @@ Route::prefix('/alumni')->name('alumni.')->group(function() {
 
 Route::prefix('/lowongan-kerja')->name('lowongan-kerja.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [LowonganKerjaController::class, 'create'])->name('create');
+        Route::post('/', [LowonganKerjaController::class, 'store'])->name('store');
     });
     Route::get('/', [LowonganKerjaController::class, 'index'])->name('index');
 });
