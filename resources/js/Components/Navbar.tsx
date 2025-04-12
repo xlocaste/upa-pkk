@@ -38,7 +38,7 @@ export default function Navbar({ children }: NavbarProps) {
                                     Alumni
                                 </Link>
                                 <Link
-                                    href={route('login')}
+                                    href={route('lowongan-kerja.index')}
                                     className="px-4 py-2 text-sm text-gray-700 hover:underline"
                                 >
                                     Lowongan Kerja

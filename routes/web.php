@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Alumni\MahasiswaController;
 use App\Http\Controllers\Alumni\AlumniController;
+use App\Http\Controllers\LowonganKerjaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -47,6 +48,12 @@ Route::prefix('/alumni')->name('alumni.')->group(function() {
         Route::get('/{alumni}/edit', [AlumniController::class, 'edit'])->name('edit');
     });
     Route::get('/', [AlumniController::class, 'index'])->name('index');
+});
+
+Route::prefix('/lowongan-kerja')->name('lowongan-kerja.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+    });
+    Route::get('/', [LowonganKerjaController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';
