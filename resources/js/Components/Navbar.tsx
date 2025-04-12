@@ -21,9 +21,9 @@ export default function Navbar({ children }: NavbarProps) {
                 <div className="bg-white border-b border-gray-100 shadow-sm">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16 items-center">
-                            <div className="flex">
+                            <Link href="/">
                                 <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
-                            </div>
+                            </Link>
                             <div className="flex space-x-4">
                                 <Link
                                     href={route('mahasiswa.index')}
