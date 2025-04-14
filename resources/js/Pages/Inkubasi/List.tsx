@@ -81,7 +81,7 @@ export default function List({ Inkubasi, auth }: Props) {
               {auth.user && (
                 <div className="mt-6">
                   <Link
-                    href={route('inkubasi.index')}
+                    href={route('inkubasi.create')}
                     className="px-4 py-2 text-sm text-gray-700 hover:underline"
                   >
                     Tambah Inkubasi
