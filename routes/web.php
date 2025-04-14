@@ -66,9 +66,9 @@ Route::prefix('/inkubasi')->name('inkubasi.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [InkubasiController::class, 'create'])->name('create');
         Route::post('/', [InkubasiController::class, 'store'])->name('store');
-        // Route::put('/{lowonganKerja}', [LowonganKerjaController::class, 'update'])->name('update');
-        // Route::delete('/{lowonganKerja}', [LowonganKerjaController::class, 'destroy'])->name('destroy');
-        // Route::get('/{lowonganKerja}/edit', [LowonganKerjaController::class, 'edit'])->name('edit');
+        Route::put('/{inkubasi}', [InkubasiController::class, 'update'])->name('update');
+        // Route::delete('/{inkubasi}', [InkubasiController::class, 'destroy'])->name('destroy');
+        Route::get('/{inkubasi}/edit', [InkubasiController::class, 'edit'])->name('edit');
     });
     Route::get('/', [InkubasiController::class, 'index'])->name('index');
 });
