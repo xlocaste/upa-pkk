@@ -68,7 +68,7 @@ export default function List({ daftarAlumni, auth }: Props) {
                       {auth.user && (
                         <td className="border border-gray-300 p-2 space-x-2">
                           <Link
-                            href={route('alumni.edit', alumni.id)}
+                            href={route('lowongan-kerja.edit', alumni.id)}
                             className="px-4 py-2 text-sm text-gray-700 hover:underline"
                           >
                             Edit Alumni

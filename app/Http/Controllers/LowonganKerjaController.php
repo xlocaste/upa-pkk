@@ -40,6 +40,36 @@ class LowonganKerjaController extends Controller
         return redirect()->route('lowongan-kerja.index');
     }
 
+    public function update(UpdateRequest $request, LowonganKerja $lowonganKerja)
+    {
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('LowongaKerja', 'public');
+        }
+
+        $lowonganKerja->Update([
+            'image'=>$image,
+            'judul_lowongan_kerja'=>$request->judul_lowongan_kerja,
+            'deskripsi'=>$request->deskripsi,
+            'kontak'=>$request->kontak,
+        ]);
+
+        return redirect()->route('lowongan-kerja.index');
+    }
+
+    public function destroy(LowonganKerja $lowonganKerja)
+    {
+        $lowonganKerja->delete();
+
+        return Redirect::route('lowongan-kerja.index')->with('message', 'Data berhasil dihapus');
+    }
+
+    public function edit(LowonganKerja $lowonganKerja)
+    {
+        return Inertia::render('LowonganKerja/Update', [
+            'lowonganKerja' => $lowonganKerja
+        ]);
+    }
+
     public function create()
     {
         return Inertia::render('LowonganKerja/Add');

@@ -54,6 +54,9 @@ Route::prefix('/lowongan-kerja')->name('lowongan-kerja.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [LowonganKerjaController::class, 'create'])->name('create');
         Route::post('/', [LowonganKerjaController::class, 'store'])->name('store');
+        Route::put('/{lowonganKerja}', [LowonganKerjaController::class, 'update'])->name('update');
+        Route::delete('/{lowonganKerja}', [LowonganKerjaController::class, 'destroy'])->name('destroy');
+        Route::get('/{lowonganKerja}/edit', [LowonganKerjaController::class, 'edit'])->name('edit');
     });
     Route::get('/', [LowonganKerjaController::class, 'index'])->name('index');
 });

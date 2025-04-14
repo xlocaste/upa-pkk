@@ -21,15 +21,10 @@ interface Props {
 }
 
 const handleDelete = (id: number) => {
-  if (confirm('Yakin ingin menghapus lowongan kerja ini?')) {
-    router.delete(route('lowongan-kerja.index', { lowongan: id }), {
-      preserveScroll: true,
-      onSuccess: () => {
-        console.log('Lowongan kerja berhasil dihapus');
-      },
-    });
-  }
-};
+    if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+      router.delete(route('lowongan-kerja.destroy', { lowonganKerja: id }));
+    }
+  };
 
 export default function List({ lowonganKerja, auth }: Props) {
   const { url } = usePage();
@@ -70,7 +65,7 @@ export default function List({ lowonganKerja, auth }: Props) {
                       {auth.user && (
                         <td className="border border-gray-300 p-2">
                           <Link
-                            href={route('lowongan-kerja.index', item.id)}
+                            href={route('lowongan-kerja.edit', item.id)}
                             className="mr-2 text-blue-600 hover:underline"
                           >
                             Edit
