@@ -24,7 +24,7 @@ interface Props {
 
 const handleDelete = (id: number) => {
   if (confirm('Yakin ingin menghapus data pra inkubasi ini?')) {
-    router.delete(route('pra-inkubasi.index', { prainkubasi: id }))
+    router.delete(route('pra-inkubasi.destroy', { praInkubasi: id }))
   }
 }
 

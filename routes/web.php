@@ -79,7 +79,7 @@ Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
         Route::get('/create', [PraInkubasiController::class, 'create'])->name('create');
         Route::post('/', [PraInkubasiController::class, 'store'])->name('store');
         Route::put('/{praInkubasi}', [PraInkubasiController::class, 'update'])->name('update');
-        // Route::delete('/{praInkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
+        Route::delete('/{praInkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
         Route::get('/{praInkubasi}/edit', [PraInkubasiController::class, 'edit'])->name('edit');
     });
     Route::get('/', [PraInkubasiController::class, 'index'])->name('index');

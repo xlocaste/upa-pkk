@@ -52,6 +52,13 @@ class PraInkubasiController extends Controller
         return redirect()->route('pra-inkubasi.index');
     }
 
+    public function destroy(PraInkubasi $praInkubasi)
+    {
+        $praInkubasi->delete();
+
+        return Redirect::route('pra-inkubasi.index')->with('message', 'Data berhasil dihapus');
+    }
+
     public function edit(PraInkubasi $praInkubasi)
     {
         return Inertia::render('PraInkubasi/Update', [
