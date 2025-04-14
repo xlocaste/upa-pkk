@@ -48,6 +48,13 @@ class InkubasiController extends Controller
         return redirect()->route('inkubasi.index');
     }
 
+    public function destroy(Inkubasi $inkubasi)
+    {
+        $inkubasi->delete();
+
+        return Redirect::route('inkubasi.index')->with('message', 'Data berhasil dihapus');
+    }
+
     public function edit(Inkubasi $inkubasi)
     {
         return Inertia::render('Inkubasi/Update', [

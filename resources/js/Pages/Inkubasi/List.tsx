@@ -22,7 +22,7 @@ interface Props {
 
 const handleDelete = (id: number) => {
   if (confirm('Yakin ingin menghapus data inkubasi ini?')) {
-    router.delete(route('inkubasi.index', { inkubasi: id }))
+    router.delete(route('inkubasi.destroy', { inkubasi: id }))
   }
 }
 
