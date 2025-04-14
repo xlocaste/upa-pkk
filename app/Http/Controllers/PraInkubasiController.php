@@ -23,4 +23,23 @@ class PraInkubasiController extends Controller
             ],
         ]);
     }
+
+    public function store(StoreRequest $request)
+    {
+        $praInkubasi = PraInkubasi::create([
+            'nama_usaha'=>$request->nama_usaha,
+            'prodi'=>$request->prodi,
+            'kelas'=>$request->kelas,
+            'semester'=>$request->semester,
+            'brand_produk'=>$request->brand_produk,
+            'link'=>$request->link,
+        ]);
+
+        return redirect()->route('pra-inkubasi.index');
+    }
+
+    public function create()
+    {
+        return Inertia::render('PraInkubasi/Add');
+    }
 }
