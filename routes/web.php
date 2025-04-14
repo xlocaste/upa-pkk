@@ -78,9 +78,9 @@ Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
     Route::group(['middleware' => ['auth']], function() {
         Route::get('/create', [PraInkubasiController::class, 'create'])->name('create');
         Route::post('/', [PraInkubasiController::class, 'store'])->name('store');
-        // Route::put('/{inkubasi}', [PraInkubasiController::class, 'update'])->name('update');
-        // Route::delete('/{inkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
-        // Route::get('/{inkubasi}/edit', [PraInkubasiController::class, 'edit'])->name('edit');
+        Route::put('/{praInkubasi}', [PraInkubasiController::class, 'update'])->name('update');
+        // Route::delete('/{praInkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
+        Route::get('/{praInkubasi}/edit', [PraInkubasiController::class, 'edit'])->name('edit');
     });
     Route::get('/', [PraInkubasiController::class, 'index'])->name('index');
 });

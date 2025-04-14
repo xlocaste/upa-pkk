@@ -73,7 +73,7 @@ export default function List({ praInkubasi, auth }: Props) {
                       {auth.user && (
                         <td className="border border-gray-300 p-2 space-x-2">
                           <Link
-                            href={route('pra-inkubasi.index', { prainkubasi: item.id })}
+                            href={route('pra-inkubasi.edit', { praInkubasi: item.id })}
                             className="px-4 py-2 text-sm text-blue-600 hover:underline"
                           >
                             Edit

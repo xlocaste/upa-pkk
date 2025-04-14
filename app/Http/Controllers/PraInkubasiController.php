@@ -38,6 +38,27 @@ class PraInkubasiController extends Controller
         return redirect()->route('pra-inkubasi.index');
     }
 
+    public function update(UpdateRequest $request, PraInkubasi $praInkubasi)
+    {
+        $praInkubasi->update([
+            'nama_usaha'=>$request->nama_usaha,
+            'prodi'=>$request->prodi,
+            'kelas'=>$request->kelas,
+            'semester'=>$request->semester,
+            'brand_produk'=>$request->brand_produk,
+            'link'=>$request->link,
+        ]);
+
+        return redirect()->route('pra-inkubasi.index');
+    }
+
+    public function edit(PraInkubasi $praInkubasi)
+    {
+        return Inertia::render('PraInkubasi/Update', [
+            'praInkubasi' => $praInkubasi
+        ]);
+    }
+
     public function create()
     {
         return Inertia::render('PraInkubasi/Add');
