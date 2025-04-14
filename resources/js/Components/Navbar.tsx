@@ -44,7 +44,7 @@ export default function Navbar({ children }: NavbarProps) {
                                     Lowongan Kerja
                                 </Link>
                                 <Link
-                                    href={route('login')}
+                                    href={route('inkubasi.index')}
                                     className="px-4 py-2 text-sm text-gray-700 hover:underline"
                                 >
                                     Inkubasi

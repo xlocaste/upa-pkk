@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Alumni\MahasiswaController;
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\LowonganKerjaController;
+use App\Http\Controllers\InkubasiController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -59,6 +60,17 @@ Route::prefix('/lowongan-kerja')->name('lowongan-kerja.')->group(function() {
         Route::get('/{lowonganKerja}/edit', [LowonganKerjaController::class, 'edit'])->name('edit');
     });
     Route::get('/', [LowonganKerjaController::class, 'index'])->name('index');
+});
+
+Route::prefix('/inkubasi')->name('inkubasi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        // Route::get('/create', [LowonganKerjaController::class, 'create'])->name('create');
+        // Route::post('/', [LowonganKerjaController::class, 'store'])->name('store');
+        // Route::put('/{lowonganKerja}', [LowonganKerjaController::class, 'update'])->name('update');
+        // Route::delete('/{lowonganKerja}', [LowonganKerjaController::class, 'destroy'])->name('destroy');
+        // Route::get('/{lowonganKerja}/edit', [LowonganKerjaController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [InkubasiController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';
