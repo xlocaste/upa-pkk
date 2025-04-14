@@ -5,6 +5,7 @@ use App\Http\Controllers\Alumni\MahasiswaController;
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\LowonganKerjaController;
 use App\Http\Controllers\InkubasiController;
+use App\Http\Controllers\PraInkubasiController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -71,6 +72,17 @@ Route::prefix('/inkubasi')->name('inkubasi.')->group(function() {
         Route::get('/{inkubasi}/edit', [InkubasiController::class, 'edit'])->name('edit');
     });
     Route::get('/', [InkubasiController::class, 'index'])->name('index');
+});
+
+Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        // Route::get('/create', [PraInkubasiController::class, 'create'])->name('create');
+        // Route::post('/', [PraInkubasiController::class, 'store'])->name('store');
+        // Route::put('/{inkubasi}', [PraInkubasiController::class, 'update'])->name('update');
+        // Route::delete('/{inkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
+        // Route::get('/{inkubasi}/edit', [PraInkubasiController::class, 'edit'])->name('edit');
+    });
+    Route::get('/', [PraInkubasiController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';

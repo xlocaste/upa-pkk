@@ -50,7 +50,7 @@ export default function Navbar({ children }: NavbarProps) {
                                     Inkubasi
                                 </Link>
                                 <Link
-                                    href={route('login')}
+                                    href={route('pra-inkubasi.index')}
                                     className="px-4 py-2 text-sm text-gray-700 hover:underline"
                                 >
                                     Pra Inkubasi
