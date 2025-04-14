@@ -1,7 +1,7 @@
 import Navbar from '@/Components/Navbar'
 import { Head, usePage, Link, router } from '@inertiajs/react'
 
-interface PraInkubasi {
+interface praInkubasi {
   id: number
   nama_usaha: string
   prodi: string
@@ -12,7 +12,7 @@ interface PraInkubasi {
 }
 
 interface Props {
-  PraInkubasi: PraInkubasi[]
+  praInkubasi: praInkubasi[]
   auth: {
     user: {
       id: number
@@ -28,7 +28,7 @@ const handleDelete = (id: number) => {
   }
 }
 
-export default function List({ PraInkubasi, auth }: Props) {
+export default function List({ praInkubasi, auth }: Props) {
   const { url } = usePage()
 
   return (
@@ -53,7 +53,7 @@ export default function List({ PraInkubasi, auth }: Props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {PraInkubasi.map((item) => (
+                  {praInkubasi.map((item) => (
                     <tr key={item.id} className="hover:bg-gray-100">
                       <td className="border border-gray-300 p-2">{item.nama_usaha}</td>
                       <td className="border border-gray-300 p-2">{item.prodi}</td>
